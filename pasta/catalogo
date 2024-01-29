@@ -1,0 +1,77 @@
+insert into autor values (2,'Maria');
+
+select * from musica_autor;
+
+insert into gravadora values (2,'Universal','Av.Paulista');
+
+insert into musica values(3,'Amanhã',145);
+
+insert into musica_autor values(1,1);
+insert into musica_autor values(2,4);
+insert into musica_autor values(3,5);
+
+
+create Schema aluno_catalogo;
+use aluno_catalogo;
+
+create table autor(
+codigo_autor int primary key not null,
+nome_autor varchar(40)
+);
+create table cd(
+codigo_cd int primary key not null,
+nome_cd varchar(40),
+preco_venda float,
+data_lancamento date,
+codigo_gravadora int
+);
+create table gravadora(
+codigo_gravadora int primary key not null,
+nome_gravadora varchar(40),
+endereco varchar(50)
+);
+create table musica(
+codigo_musica int primary key not null,
+nome_musica varchar(40),
+duracao int
+);
+create table item_cd(
+cod_cd int primary key not null,
+cod_musica int
+);
+create table musica_autor(
+cod_musica int primary key not null,
+cod_autor int
+);
+
+select MAX(preco_venda) from cd;
+SELECT cod_cd, COUNT(*)
+FROM item_cd
+GROUP BY cod_cd;
+
+SELECT codigo_gravadora, AVG(preco_venda)
+FROM cd
+GROUP BY codigo_gravadora; 
+
+SELECT codigo_gravadora, AVG(preco_venda), COUNT(*)
+FROM cd
+GROUP BY codigo_gravadora;
+
+SELECT cod_musica, COUNT(*)
+FROM musica_autor
+WHERE cod_musica < 2
+GROUP BY cod_musica;
+
+SELECT cod_musica, COUNT(*)
+FROM musica_autor
+GROUP BY cod_musica
+HAVING cod_musica < 2;
+
+SELECT cod_musica, COUNT(*)
+FROM musica_autor
+GROUP BY cod_musica
+HAVING COUNT(*) > 1;
+
+select nome_autor, cod_musica from autor,musica_autor where codigo_autor = cod_autor;
+select nome_cd,nome_gravadora from cd join gravadora on cd.codigo_gravadora = gravadora.codigo_gravadora;
+ALTER TABLE musica_autor ADD FOREIGN KEY(cod_musica) REFERENCES musica (codigo_musica);
