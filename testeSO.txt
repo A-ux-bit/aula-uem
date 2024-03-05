@@ -1,0 +1,77 @@
+#include <stdio.h>
+
+void mapaDeBits() {
+    printf("Você escolheu Mapa de Bits.\n");
+    // Implemente a funcionalidade aqui
+}
+
+void listaEncadeada() {
+    printf("Você escolheu Lista Encadeada.\n");
+    // Implemente a funcionalidade aqui
+}
+
+void sistemaBuddy() {
+    int opcao;
+    printf("Você escolheu Sistema Buddy.\n");
+    printf("Escolha um algoritmo:\n");
+    printf("1. First-Fit\n");
+    printf("2. Next-Fit\n");
+    printf("3. Best-Fit\n");
+    printf("4. Quick-Fit\n");
+    printf("Escolha uma opção: ");
+    scanf("%d", &opcao);
+
+    switch(opcao) {
+        case 1:
+            printf("Você escolheu First-Fit.\n");
+            // Implemente a funcionalidade aqui
+            break;
+        case 2:
+            printf("Você escolheu Next-Fit.\n");
+            // Implemente a funcionalidade aqui
+            break;
+        case 3:
+            printf("Você escolheu Best-Fit.\n");
+            // Implemente a funcionalidade aqui
+            break;
+        case 4:
+            printf("Você escolheu Quick-Fit.\n");
+            // Implemente a funcionalidade aqui
+            break;
+        default:
+            printf("Opção inválida.\n");
+    }
+}
+
+int main() {
+    int opcao;
+
+    while(1) {
+        printf("Menu:\n");
+        printf("1. Mapa de Bits\n");
+        printf("2. Lista Encadeada\n");
+        printf("3. Sistema Buddy\n");
+        printf("4. Sair\n");
+        printf("Escolha uma opção: ");
+        scanf("%d", &opcao);
+
+        switch(opcao) {
+            case 1:
+                mapaDeBits();
+                break;
+            case 2:
+                listaEncadeada();
+                break;
+            case 3:
+                sistemaBuddy();
+                break;
+            case 4:
+                printf("Saindo do programa.\n");
+                return 0;
+            default:
+                printf("Opção inválida.\n");
+        }
+    }
+
+    return 0;
+}
